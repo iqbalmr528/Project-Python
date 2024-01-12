@@ -1,0 +1,19 @@
+import os
+
+def change_file_extension(directory, old_extension, new_extension):
+    for filename in os.listdir(directory):
+        if filename.endswith(old_extension):
+            old_file_path = os.path.join(directory, filename)
+            new_filename = os.path.splitext(filename)[0] + new_extension
+            new_file_path = os.path.join(directory, new_filename)
+
+            # Mengganti ekstensi file
+            os.rename(old_file_path, new_file_path)
+            print(f"{filename} diubah menjadi {new_filename}")
+
+# Contoh penggunaan
+directory_to_change = "/path/to/directory"
+old_ext = ".txt"
+new_ext = ".csv"
+
+change_file_extension(directory_to_change, old_ext, new_ext)
